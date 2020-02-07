@@ -1,3 +1,3 @@
 # bmi_calculator
-- ![image](screen.png)
+![image](screen.png)
 
