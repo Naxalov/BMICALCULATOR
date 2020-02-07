@@ -18,7 +18,6 @@ class Home extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
- 
               children: <Widget>[
                 Expanded(
                   child: Padding(
@@ -51,10 +50,30 @@ class Home extends StatelessWidget {
           ),
 //          Height
           Expanded(
-            child: Container(
-              child: Text(
-                'HEIGHT',
-                style: TextStyle(color: Colors.white),
+            child: Card(
+              color: Colors.black12,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Text(
+                    'HEIGHT',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    '175',
+                    style: TextStyle(fontSize: 60.0, color: Colors.white),
+                  ),
+                  Slider(
+                    value: 0,
+                    onChanged: (double value) {},
+                    min: 0,
+                    max: 100,
+                    activeColor: Colors.red,
+
+
+                  )
+                ],
               ),
             ),
           ),
@@ -103,13 +122,13 @@ class Home extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(0.0),
               ),
-
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               color: Colors.red,
               child: Text(
                 'CALCULATE',
                 style: TextStyle(color: Colors.white),
-              ), onPressed: () {},
+              ),
+              onPressed: () {},
             ),
           )
         ],
