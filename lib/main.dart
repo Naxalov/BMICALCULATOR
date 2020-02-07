@@ -1,4 +1,5 @@
 import 'package:bmi_calculator/screen/home.dart';
+import 'package:bmi_calculator/screen/inputPage.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -9,10 +10,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Color(0xFF0A0E21),
+        scaffoldBackgroundColor: Color(0xFF080C22),
+
+
       ),
-      home: Home(),
+      home: InputPage(),
     );
   }
 }
