@@ -14,33 +14,40 @@ class Home extends StatelessWidget {
       body: Column(
         children: <Widget>[
 //        Gender
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    child: Icon(
-                      FontAwesomeIcons.mars,
-                      color: Colors.white,
-                      size: 50.0,
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.center,
+ 
+              children: <Widget>[
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      color: Colors.black12,
+                      child: Icon(
+                        FontAwesomeIcons.mars,
+                        color: Colors.white,
+                        size: 50.0,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    child: Icon(
-                      FontAwesomeIcons.venus,
-                      color: Colors.white,
-                      size: 50.0,
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      color: Colors.black12,
+                      child: Icon(
+                        FontAwesomeIcons.venus,
+                        color: Colors.white,
+                        size: 50.0,
+                      ),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
 //          Height
           Expanded(
