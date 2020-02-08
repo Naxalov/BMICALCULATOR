@@ -34,7 +34,7 @@ class _InputPageState extends State<InputPage> {
                     child: InputCard(
                       cardChild: IconContent(
                         icon: FontAwesomeIcons.venus,
-                        lable: 'FAMEL',
+                        lable: 'FEMALE',
                       ),
                       color: activeCardColor,
                     ),
@@ -55,6 +55,12 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
+            Container(
+              color: bottomContainerColor,
+              margin: EdgeInsets.only(top: 10.0),
+              height: bottomContainerHeight,
+              width: double.infinity,
+            )
           ],
         ),
       ),
@@ -88,6 +94,7 @@ class IconContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Icon(
           icon,
