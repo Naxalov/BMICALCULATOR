@@ -5,7 +5,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const Color activeCardColor = Color(0xFF1D1E33);
 const Color bottomContainerColor = Color(0xFFEB1555);
+const Color inactiveCardColor = Color(0xFF111328);
 const bottomContainerHeight = 80.0;
+
 //Color(0xFF1D1E33)
 class InputPage extends StatefulWidget {
   @override
@@ -13,6 +15,9 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Color maleCardColor = inactiveCardColor;
+  Color femaleCardColor = inactiveCardColor;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,41 +29,60 @@ class _InputPageState extends State<InputPage> {
         child: Column(
           children: <Widget>[
             Expanded(
+//              MALE
               child: Row(
                 children: <Widget>[
                   Expanded(
                       child: GestureDetector(
-                        onTap: (){
-                          print('Male card was pressed');
-                        },
-
-                        child: InputCard(
-                    cardChild:
-                          IconContent(icon: FontAwesomeIcons.mars, lable: 'MALE'),
-                    color: activeCardColor,
-                  ),
-                      )),
-                  Expanded(
+                    onTap: () {
+                      print('Male card was pressed');
+                      setState(() {
+                        maleCardColor = activeCardColor;
+                        femaleCardColor = inactiveCardColor;
+                      });
+                    },
                     child: InputCard(
                       cardChild: IconContent(
-                        icon: FontAwesomeIcons.venus,
-                        lable: 'FEMALE',
+                          icon: FontAwesomeIcons.mars, lable: 'MALE'),
+                      color: maleCardColor,
+                    ),
+                  )),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          maleCardColor = inactiveCardColor;
+                          femaleCardColor = activeCardColor;
+                        });
+                      },
+                      child: InputCard(
+                        cardChild: IconContent(
+                          icon: FontAwesomeIcons.venus,
+                          lable: 'FEMALE',
+                        ),
+                        color: femaleCardColor,
                       ),
-                      color: activeCardColor,
                     ),
                   ),
                 ],
               ),
             ),
             Expanded(
-              child: InputCard(color: activeCardColor,),
+              child: InputCard(
+                color: activeCardColor,
+              ),
             ),
             Expanded(
               child: Row(
                 children: <Widget>[
-                  Expanded(child: InputCard(color: activeCardColor,)),
                   Expanded(
-                    child: InputCard(color: activeCardColor,),
+                      child: InputCard(
+                    color: activeCardColor,
+                  )),
+                  Expanded(
+                    child: InputCard(
+                      color: activeCardColor,
+                    ),
                   ),
                 ],
               ),
@@ -75,5 +99,3 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
-
-
