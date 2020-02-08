@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-const Color activeCardColor = Color(0xFF8D8E98);
+const Color activeCardColor = Color(0xFF1D1E33);
 
+//Color(0xFF1D1E33)
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -22,9 +23,20 @@ class _InputPageState extends State<InputPage> {
             Expanded(
               child: Row(
                 children: <Widget>[
-                  Expanded(child: InputCard()),
                   Expanded(
-                    child: InputCard(),
+                      child: InputCard(
+                    cardChild:
+                        IconContent(icon: FontAwesomeIcons.mars, lable: 'MALE'),
+                    color: activeCardColor,
+                  )),
+                  Expanded(
+                    child: InputCard(
+                      cardChild: IconContent(
+                        icon: FontAwesomeIcons.venus,
+                        lable: 'FAMEL',
+                      ),
+                      color: activeCardColor,
+                    ),
                   ),
                 ],
               ),
@@ -50,34 +62,41 @@ class _InputPageState extends State<InputPage> {
 }
 
 class InputCard extends StatelessWidget {
-  const InputCard({
-    Key key,
-  }) : super(key: key);
+  final Widget cardChild;
+  final Color color;
+
+  InputCard({this.cardChild, this.color});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: cardChild,
       margin: EdgeInsets.all(15.0),
       decoration: BoxDecoration(
-          color: Color(0xFF1D1E33), borderRadius: BorderRadius.circular(10.0)),
+          color: color, borderRadius: BorderRadius.circular(10.0)),
     );
   }
 }
 
 class IconContent extends StatelessWidget {
+  final IconData icon;
+  final String lable;
+
+  IconContent({this.icon, this.lable});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         Icon(
-          FontAwesomeIcons.mars,
+          icon,
           size: 80.0,
         ),
         SizedBox(
           height: 15.0,
         ),
         Text(
-          'MALE',
+          lable,
           style: TextStyle(fontSize: 18, color: Color(0xFF8D8E98)),
         )
       ],
