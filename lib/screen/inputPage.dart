@@ -20,16 +20,9 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColor = inactiveCardColor;
-  Color femaleCardColor = inactiveCardColor;
+  GenderType selectedGender;
 
-  void updateColor(GenderType selectedGender) {
-    maleCardColor =
-        selectedGender == GenderType.male ? activeCardColor : inactiveCardColor;
-    femaleCardColor = selectedGender == GenderType.female
-        ? activeCardColor
-        : inactiveCardColor;
-  }
+//
 
   @override
   Widget build(BuildContext context) {
@@ -50,20 +43,22 @@ class _InputPageState extends State<InputPage> {
                     onTap: () {
                       print('Male card was pressed');
                       setState(() {
-                        updateColor(GenderType.male);
+                        selectedGender = GenderType.male;
                       });
                     },
                     child: InputCard(
                       cardChild: IconContent(
                           icon: FontAwesomeIcons.mars, lable: 'MALE'),
-                      color: maleCardColor,
+                      color: selectedGender == GenderType.male
+                          ? activeCardColor
+                          : inactiveCardColor,
                     ),
                   )),
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          updateColor(GenderType.female);
+                          selectedGender = GenderType.female;
                         });
                       },
                       child: InputCard(
@@ -71,7 +66,9 @@ class _InputPageState extends State<InputPage> {
                           icon: FontAwesomeIcons.venus,
                           lable: 'FEMALE',
                         ),
-                        color: femaleCardColor,
+                        color: selectedGender == GenderType.female
+                            ? activeCardColor
+                            : inactiveCardColor,
                       ),
                     ),
                   ),
