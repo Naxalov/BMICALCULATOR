@@ -4,7 +4,6 @@ import 'package:bmi_calculator/screen/input_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
 enum GenderType {
   male,
   female,
@@ -36,6 +35,7 @@ class _InputPageState extends State<InputPage> {
       ),
       body: Container(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
 //              MALE
@@ -43,7 +43,7 @@ class _InputPageState extends State<InputPage> {
                 children: <Widget>[
                   Expanded(
                       child: InputCard(
-                    onPress: (){
+                    onPress: () {
                       setState(() {
                         selectedGender = GenderType.male;
                       });
@@ -51,12 +51,12 @@ class _InputPageState extends State<InputPage> {
                     cardChild:
                         IconContent(icon: FontAwesomeIcons.mars, lable: 'MALE'),
                     color: selectedGender == GenderType.male
-                        ? activeCardColor
-                        : inactiveCardColor,
+                        ? inputActiveCardColor
+                        : inputInactiveCardColor,
                   )),
                   Expanded(
                     child: InputCard(
-                      onPress: (){
+                      onPress: () {
                         setState(() {
                           selectedGender = GenderType.female;
                         });
@@ -66,8 +66,8 @@ class _InputPageState extends State<InputPage> {
                         lable: 'FEMALE',
                       ),
                       color: selectedGender == GenderType.female
-                          ? activeCardColor
-                          : inactiveCardColor,
+                          ? inputActiveCardColor
+                          : inputInactiveCardColor,
                     ),
                   ),
                 ],
@@ -75,7 +75,27 @@ class _InputPageState extends State<InputPage> {
             ),
             Expanded(
               child: InputCard(
-                color: activeCardColor,
+                cardChild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'HEIGHT',
+                      style: labelTextStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: <Widget>[
+                        Text(
+                          '175',
+                          style:inputNumberTextStyle),
+                        Text('cm'),
+                      ],
+                    ),
+                  ],
+                ),
+                color: inputActiveCardColor,
               ),
             ),
             Expanded(
@@ -83,18 +103,18 @@ class _InputPageState extends State<InputPage> {
                 children: <Widget>[
                   Expanded(
                       child: InputCard(
-                    color: activeCardColor,
+                    color: inputActiveCardColor,
                   )),
                   Expanded(
                     child: InputCard(
-                      color: activeCardColor,
+                      color: inputActiveCardColor,
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              color: bottomContainerColor,
+              color: inputBottomContainerColor,
               margin: EdgeInsets.only(top: 10.0),
               height: bottomContainerHeight,
               width: double.infinity,
