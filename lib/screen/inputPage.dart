@@ -17,7 +17,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   GenderType selectedGender;
-
+  int height = 180;
   updateColor(GenderType gender) {
     setState(() {
       selectedGender = gender;
@@ -88,11 +88,24 @@ class _InputPageState extends State<InputPage> {
                       textBaseline: TextBaseline.alphabetic,
                       children: <Widget>[
                         Text(
-                          '175',
+                          height.toString(),
                           style:inputNumberTextStyle),
                         Text('cm'),
+
                       ],
                     ),
+                    Slider(
+                      value: height.toDouble(),
+                      max: 220,
+                      min: 120,
+                      activeColor: Color(0xFFEB1555),
+                      inactiveColor: Color(0xFF8D8E98),
+                      onChanged: (
+                          double value) {
+                        setState(() {
+                          height = value.round();
+                        });
+                      },),
                   ],
                 ),
                 color: inputActiveCardColor,
